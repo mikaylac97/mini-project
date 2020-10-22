@@ -35,8 +35,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const SpotifyWebApi = require('spotify-web-api-node')
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: '1935a7c38db446288d542d8ecded5367',
-    clientSecret: 'f00501ae02e74f4b89441d6f7218fa20'
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET
 })
 
 // Retrieve an access token
