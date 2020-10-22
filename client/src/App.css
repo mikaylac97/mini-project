@@ -1,0 +1,78 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*  HOME/SHOWALL PAGE STYLES  */
+
+.ft-playlist-img {
+  width: 50%
+}
+
+.featured-playlists {
+  margin: 50px 30px;
+}
+
+/*  DETAILS PAGE STYLES  */
+
+.tracks-list {
+    margin: 30px 50px;
+}
+
+.tracks-list td {
+  padding-top: 20px;
+}
+
+/* .album-td {
+  width: 50px;
+} */
+
+.playlist-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30px 60px;
+}
+
+.playlist-details img {
+  width: 25vw;
+}
+
+.playlist-details div {
+  margin-right: 30px;
+}
+
