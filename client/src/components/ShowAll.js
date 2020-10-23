@@ -80,18 +80,21 @@ export default class ShowAll extends Component {
         const creatorsNoDuplicates = playlistCreators.filter((creator, i) => playlistCreators.indexOf(creator) === i)
         console.log(creatorsNoDuplicates)    
         return (
-            <div container-desktop>
+            <div container>
             <nav className="navbar navbar-light bg-light justify-content-between">
-                    <Link to='/playlists' className="navbar-brand" onClick={() => window.location.reload()}>Home</Link>
-                    <form className="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">
+                    <Link to='/playlists' className="navbar-brand home-btn" onClick={() => window.location.reload()}><h3>Home</h3></Link>
+                    {/* <form className=""> */}
+                    <div className='search-bar'>
                     <i className="fas fa-search" aria-hidden="true"></i>
-                        <input className='search-bar' type='text' value={this.state.search} onChange={this.getSearchedPlaylists} placeholder='Search'></input>
-                    </form>
+                        <input className='search-input' type='text' value={this.state.search} onChange={this.getSearchedPlaylists} placeholder='Search'></input>
+                        </div>
+                    {/* </form> */}
                 </nav>
             <div className='row'>
                 <div className='col-sm-3'>
-                        <h4>Refine by</h4>
-                        <hr />
+                <div className='filter-sidebar'>
+                        <h5>Refine by</h5>
+                        
                     <div>
                         <h6 className='text-info'>Number of Tracks</h6>
                         <ul className='list-group'>
@@ -115,7 +118,7 @@ export default class ShowAll extends Component {
                     </div>
                     <div>
                         <h6 className='text-info'>Created By</h6>
-                        <ul>
+                        <ul className='list-group'>
                         {creatorsNoDuplicates.map(creator => {
                             return(
                                 <li className='form-check'>
@@ -126,36 +129,8 @@ export default class ShowAll extends Component {
                         })}
                         </ul>
                     </div>
-                    <div>
-                        <h6 className='text-info'>Featured Artists</h6>
-                        <ul className='list-group'>
-                            <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">0-20</label>
-                            </li>
-                            <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">21-40</label>
-                            </li>
-                            <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">41-60</label>
-                            </li>
-                            <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">61-80</label>
-                            </li>
-                            <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">81-100</label>
-                            </li>
-                            <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">100+</label>
-                            </li>
-                        </ul>
-                    </div>
 
+                </div>
                 </div>
                 <div className='col-sm-9'>
         <div className='container featured-playlists'> 

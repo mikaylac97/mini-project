@@ -13,7 +13,8 @@ export default class Details extends Component {
         description: '',
         name: '',
         owner: '',
-        total_songs: 0
+        total_songs: 0,
+        playlist_link: ''
     }
 
     componentDidMount() {
@@ -32,7 +33,8 @@ export default class Details extends Component {
                     description: responseFromAPI.data.body.description,
                     name: responseFromAPI.data.body.name,
                     owner: responseFromAPI.data.body.owner.display_name,
-                    total_songs: responseFromAPI.data.body.tracks.total
+                    total_songs: responseFromAPI.data.body.tracks.total,
+                    playlist_link: responseFromAPI.data.body.external_urls.spotify
                 })
             })
             .catch(err => console.log(err))
@@ -53,7 +55,7 @@ export default class Details extends Component {
         <div className='container-desktop'>
         {/* <Navbar /> */}
         <nav className="navbar navbar-light bg-light justify-content-between">
-                    <Link to='/playlists' className="navbar-brand">Home</Link>
+        <Link to='/playlists' className="navbar-brand home-btn"><h3>Home</h3></Link>
                     {/* <form className="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">
                     <i className="fas fa-search" aria-hidden="true"></i>
                         <input className='search-bar' type='text' value={this.state.search} onChange={this.getSearchedPlaylists} placeholder='Search'></input>
@@ -66,7 +68,7 @@ export default class Details extends Component {
                     <i className="far fa-heart fave-heart"></i>
                 </div>
                 <div className='playlist-details-txt'>
-                    <h2>{this.state.name}</h2>
+                <a href={this.state.playlist_link} className='playlist-link'><h2>{this.state.name}</h2></a>
                     <p>{this.state.description}</p>
                     <p>Created by <b>{this.state.owner}</b> - {this.state.total_songs} Tracks</p>
                 </div>
@@ -86,11 +88,11 @@ export default class Details extends Component {
    {this.state.tracks.map((track, i) => {
        return (
            
-               <tr key={i}>
+               <tr key={i} className='table-rows'>
                    <th scope='row'>{i+1}</th>
-                   <td><a href={track.track.external_urls.spotify}>{track?.track?.name}</a></td>
-                   <td><a href={track.track.artists[0].external_urls.spotify}>{track?.track?.album?.artists[0]?.name}</a></td>
-                   <td><a href={track.track.album.external_urls.spotify}>{track?.track?.album?.name}</a></td>
+                   <td><a href={track.track.external_urls.spotify} className='playlist-links'>{track?.track?.name}</a></td>
+                   <td><a href={track.track.artists[0].external_urls.spotify} className='playlist-links'>{track?.track?.album?.artists[0]?.name}</a></td>
+                   <td><a href={track.track.album.external_urls.spotify} className='playlist-links'>{track?.track?.album?.name}</a></td>
                    <td>{this.millisToMinutesAndSeconds(track.track.duration_ms)}</td>
                </tr>
            
