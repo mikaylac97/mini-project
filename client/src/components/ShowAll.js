@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Favorites from './Favorites'
 // import Navbar from './Navbar'
 // import Search from './Search';
 
@@ -75,17 +76,8 @@ export default class ShowAll extends Component {
         console.log(creatorsNoDuplicates)    
         return (
             <div container>
-            {/* <nav className="navbar navbar-light bg-light justify-content-between">
-                    <Link to='/playlists' className="navbar-brand home-btn" onClick={() => window.location.reload()}><h3>Home</h3></Link>
-                    
-                    <div className='search-bar'>
-                    <i className="fas fa-search" aria-hidden="true"></i>
-                        <input className='search-input' type='text' value={this.state.search} onChange={this.getSearchedPlaylists} placeholder='Search'></input>
-                        </div>
-                   
-                </nav> */}
                 <nav class='navbar navbar-expand-lg navbar-light fixed-top' id='mainNav'>
-                    <div className='container'>
+                    <div className='container'>   
                     <Link to='/playlists' className="navbar-brand home-btn" onClick={() => window.location.reload()}><h3>Home</h3></Link>
                         <div className='search-bar'>
                     <i className="fas fa-search" aria-hidden="true"></i>
@@ -148,7 +140,7 @@ export default class ShowAll extends Component {
                         <Link to={`/playlists/${playlist.id}`} style={{ textDecoration: 'none' }}>
                             <img src={playlist.images[0].url} alt='playlist-cover' className='image ft-playlist-imgs'/>
                         </Link>    
-                            <i className="far fa-heart fave-heart"></i>
+                            <Favorites />
                         </div>
                     </div>
                 

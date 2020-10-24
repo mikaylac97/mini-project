@@ -107,7 +107,7 @@
   /* width: 10vw; */
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  /* text-align: center; */
+  text-align: center;
 }
 
 .hover-ctrl:hover .image {
@@ -116,6 +116,7 @@
 
 .hover-ctrl:hover .fave-heart   {
   opacity: 1;
+  cursor: pointer;
 }
 
 /* .playlist-details:hover .image {
@@ -206,6 +207,10 @@
   font-weight: 600;
   color: white;
   text-decoration: none;
+}
+
+.details-body {
+  margin-top: 80px;
 }
 
 

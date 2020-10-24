@@ -28,7 +28,7 @@ export class Landing extends Component {
                     
                         <div className='col-lg-7 my-auto'>
                             <div className='header-content mx-auto'>
-                                <h1 className='mb-5'>Use the Spotify API to search through all playlists by tracks, artists, number of playlist followers and more!</h1>
+                                <h1 className='mb-5'>Use the Spotify API to search for playlists by name, creators, and number of tracks!</h1>
                                 <Link to='/playlists' style={{ textDecoration: 'none' }}>
                                 <button className='landing-btn'>
                                 
@@ -58,8 +58,12 @@ export class Landing extends Component {
                                 <h2 className='section-heading'>Mini Project powered by Spotify API and Spotify Node NPM package</h2>
                                 <p>Ironhack PTWD 2020 project to practice using APIs with React and implementing search and filter functionality.</p>
                                 <div className='logos'>
-                                    <img src='../../Daco_4711911.png' alt='spotify-logo' />
-                                    <img src='../../npm-logo.png' alt='npm logo' />
+                                    <a href='https://developer.spotify.com/documentation/web-api/'>
+                                        <img src='../../Daco_4711911.png' alt='spotify-logo' />
+                                    </a>
+                                    <a href='https://www.npmjs.com/package/spotify-web-api-node'>
+                                        <img src='../../npm-logo.png' alt='npm logo' />
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +160,7 @@ export class Landing extends Component {
             </section>
             <footer>
                 <div className='container'>
-                    <p>Ironhack PTWD June 2020. Mikayla Castro.</p>
+                    <p>Ironhack PTWD June 2020 Cohort. Mikayla Castro.</p>
                 </div>
             </footer>
         </div>

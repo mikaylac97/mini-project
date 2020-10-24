@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import axios from 'axios'
-// import Navbar from './Navbar'
+import Favorites from './Favorites'
 import '../App.css'
 import {  Link  } from 'react-router-dom'
 
@@ -51,26 +51,23 @@ export default class Details extends Component {
 
 
     render() {
+        const descriptionNoCover = this.state.description.split('Cover')
         return (
         <div className='container-desktop'>
-        {/* <Navbar /> */}
-        {/* <nav className="navbar navbar-light bg-light justify-content-between">
-        <Link to='/playlists' className="navbar-brand home-btn"><h3>Home</h3></Link>
-                    
-                </nav> */}
                 <nav class='navbar navbar-expand-lg navbar-light fixed-top' id='mainNav'>
                     <div className='container'>
                     <Link to='/playlists' className="navbar-brand home-btn"><h3>Home</h3></Link>
                     </div>
                 </nav>
+        <div className='details-body'>
             <div className='playlist-details'>
                 <div className='hover-ctrl container'>
                     <img src={this.state.image_url} alt='playlist-cover' className='image'/>
-                    <i className="far fa-heart fave-heart"></i>
+                    <Favorites />
                 </div>
                 <div className='playlist-details-txt'>
                 <a href={this.state.playlist_link} className='playlist-link'><h2>{this.state.name}</h2></a>
-                    <p>{this.state.description}</p>
+                    <p>{descriptionNoCover[0]}</p>
                     <p>Created by <b>{this.state.owner}</b> - {this.state.total_songs} Tracks</p>
                 </div>
             </div>  
@@ -101,6 +98,7 @@ export default class Details extends Component {
    })}
   </tbody>
 </table>
+                    </div>
                 </div>
             </div>
         )
