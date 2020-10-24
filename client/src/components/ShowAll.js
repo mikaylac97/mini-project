@@ -10,8 +10,9 @@ export default class ShowAll extends Component {
         playlists: [],
         search: '',
         boxIsChecked: false,
-        savedFeatState: {},
-        savedSearchState: {}
+        // savedFeatState: {},
+        // savedSearchState: {},
+        savedPrevState: {}
     }
 
     componentDidMount() {
@@ -49,25 +50,18 @@ export default class ShowAll extends Component {
 
     filterByNumberOfTracks = ((event, min, max) => {
         const filteredByTracks = this.state.playlists.filter(playlist => playlist.tracks.total >= min && playlist.tracks.total <= max)
-        event.target.checked ?
+        
         this.setState({
-            playlists: filteredByTracks
-        })
-        :
-        this.setState({
-            playlists: this.state.savedPrevState,
+            playlists: event.target.checked ? filteredByTracks : this.state.savedPrevState,
         })
     })
 
     filterByPlaylistCreators = ((event, creator) => {
         const filteredByCreator = this.state.playlists.filter(playlist => playlist.owner.display_name === creator)
-        event.target.checked ?
+        
         this.setState({
-            playlists: filteredByCreator
-        })
-        :
-        this.setState({
-            playlists: this.state.savedPrevState
+            playlists: event.target.checked ? filteredByCreator : this.state.savedPrevState,
+            boxIsChecked: !this.state.boxIsChecked
         })
     })
 
@@ -81,14 +75,23 @@ export default class ShowAll extends Component {
         console.log(creatorsNoDuplicates)    
         return (
             <div container>
-            <nav className="navbar navbar-light bg-light justify-content-between">
+            {/* <nav className="navbar navbar-light bg-light justify-content-between">
                     <Link to='/playlists' className="navbar-brand home-btn" onClick={() => window.location.reload()}><h3>Home</h3></Link>
-                    {/* <form className=""> */}
+                    
                     <div className='search-bar'>
                     <i className="fas fa-search" aria-hidden="true"></i>
                         <input className='search-input' type='text' value={this.state.search} onChange={this.getSearchedPlaylists} placeholder='Search'></input>
                         </div>
-                    {/* </form> */}
+                   
+                </nav> */}
+                <nav class='navbar navbar-expand-lg navbar-light fixed-top' id='mainNav'>
+                    <div className='container'>
+                    <Link to='/playlists' className="navbar-brand home-btn" onClick={() => window.location.reload()}><h3>Home</h3></Link>
+                        <div className='search-bar'>
+                    <i className="fas fa-search" aria-hidden="true"></i>
+                        <input className='search-input' type='text' value={this.state.search} onChange={this.getSearchedPlaylists} placeholder='Search'></input>
+                        </div>
+                    </div>
                 </nav>
             <div className='row'>
                 <div className='col-sm-3'>
@@ -99,31 +102,31 @@ export default class ShowAll extends Component {
                         <h6 className='text-info'>Number of Tracks</h6>
                         <ul className='list-group'>
                             <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" onClick={(e) => this.filterByNumberOfTracks(e, 0, 20)}/>
-                                <label class="form-check-label" for="exampleCheck1">0-20</label>
+                                <input type="checkbox" class="form-check-input" id="0-20" onClick={(e) => this.filterByNumberOfTracks(e, 0, 20)}/>
+                                <label class="form-check-label" for="0-20">0-20</label>
                             </li>
                             <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" onClick={(e) => this.filterByNumberOfTracks(e, 21, 50)} />
-                                <label class="form-check-label" for="exampleCheck1">21-50</label>
+                                <input type="checkbox" class="form-check-input" id="21-50" onClick={(e) => this.filterByNumberOfTracks(e, 21, 50)} />
+                                <label class="form-check-label" for="21-50">21-50</label>
                             </li>
                             <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" onClick={(e) => this.filterByNumberOfTracks(e, 51, 99)}/>
-                                <label class="form-check-label" for="exampleCheck1">51-99</label>
+                                <input type="checkbox" class="form-check-input" id="51-99" onClick={(e) => this.filterByNumberOfTracks(e, 51, 99)}/>
+                                <label class="form-check-label" for="51-99">51-99</label>
                             </li>
                             <li className='form-check'>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" onClick={(e) => this.filterByNumberOfTracks(e, 100, 300)} />
-                                <label class="form-check-label" for="exampleCheck1">100+</label>
+                                <input type="checkbox" class="form-check-input" id="100" onClick={(e) => this.filterByNumberOfTracks(e, 100, 300)} />
+                                <label class="form-check-label" for="100">100+</label>
                             </li>
                         </ul>
                     </div>
                     <div>
                         <h6 className='text-info'>Created By</h6>
                         <ul className='list-group'>
-                        {creatorsNoDuplicates.map(creator => {
+                        {creatorsNoDuplicates.map((creator, i) => {
                             return(
                                 <li className='form-check'>
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" onClick={(e) => this.filterByPlaylistCreators(e, creator)}/>
-                                    <label class="form-check-label" for="exampleCheck1">{creator}</label>
+                                    <input type="checkbox" checked={this.state.boxIsChecked} class="form-check-input" id={`exampleCheck${i}`} onClick={(e) => this.filterByPlaylistCreators(e, creator)}/>
+                                    <label class="form-check-label" for={`exampleCheck${i}`}>{creator}</label>
                                 </li> 
                             )
                         })}

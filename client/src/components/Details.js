@@ -54,13 +54,14 @@ export default class Details extends Component {
         return (
         <div className='container-desktop'>
         {/* <Navbar /> */}
-        <nav className="navbar navbar-light bg-light justify-content-between">
+        {/* <nav className="navbar navbar-light bg-light justify-content-between">
         <Link to='/playlists' className="navbar-brand home-btn"><h3>Home</h3></Link>
-                    {/* <form className="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">
-                    <i className="fas fa-search" aria-hidden="true"></i>
-                        <input className='search-bar' type='text' value={this.state.search} onChange={this.getSearchedPlaylists} placeholder='Search'></input>
-                    </form> */}
                     
+                </nav> */}
+                <nav class='navbar navbar-expand-lg navbar-light fixed-top' id='mainNav'>
+                    <div className='container'>
+                    <Link to='/playlists' className="navbar-brand home-btn"><h3>Home</h3></Link>
+                    </div>
                 </nav>
             <div className='playlist-details'>
                 <div className='hover-ctrl container'>
