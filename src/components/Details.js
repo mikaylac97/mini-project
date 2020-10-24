@@ -24,7 +24,7 @@ export default class Details extends Component {
     getSinglePlaylist = () => {
         const { params } = this.props.match;
         axios
-            .get(`http://localhost:4000/api/playlists/${params.id}`)
+            .get(`https://mini-project102020.herokuapp.com/api/playlists/${params.id}`)
             .then(responseFromAPI => {
                 console.log(responseFromAPI.data.body)
                 this.setState({

@@ -21,7 +21,7 @@ export default class ShowAll extends Component {
     }
 
     getFeaturedPlaylists = () => {
-        axios.get(`http://localhost:4000/api/all-playlists`)
+        axios.get(`https://mini-project102020.herokuapp.com/api/all-playlists`)
             .then(responseFromAPI => {
                 this.setState({
                     playlists: responseFromAPI.data.featuredPlaylists,
@@ -38,7 +38,7 @@ export default class ShowAll extends Component {
             search: value.toLowerCase()
         });
         axios
-            .get(`http://localhost:4000/api/playlist-search?playlistSearch=${this.state.search}`)
+            .get(`https://mini-project102020.herokuapp.com/api/playlist-search?playlistSearch=${this.state.search}`)
             .then(searchFromAPI => {
                 this.setState({
                     playlists: searchFromAPI.data.searchResults,
